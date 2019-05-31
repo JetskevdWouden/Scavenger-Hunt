@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Scavenger Hunt Game</title>
+        <link rel="stylesheet" type="text/css" media= screen href="./index.css">
+    </head>
+    <body>
+        <main id='searchField'>
+
+        </main>
+        <footer>
+            <h1>Items</h1>
+            <div id='foundItems'>
+
+            </div>
+        </footer>
+    </body>
+    <script>
+        const images = [{
+            name: 'pigeon',
+            src: './Images/pigeon.png'
+        },
+        {
+            name: 'batman',
+            src: './Images/batman.png'
+        },
+        {
+            name: 'sale-sign',
+            src: './Images/sale.png'
+        }];
+
+        const getRandomInit = (min, max) => {
+            let randomNumber = Math.floor(Math.random()*(max-min+1)+min);
+            //console.log(randomNumber);
+            return randomNumber;
+        }
+
+        const main = document.getElementById('searchField');
+        const footer = document.getElementById('foundItems');
+
+        for (let i = 0; i < images.length; i++) {
+            let img = document.createElement('img');
+            img.alt = images[i].name;
+            img.src = images[i].src;
+            img.style.height = '10%';
+            img.style.position = 'absolute';
+            img.style.bottom = getRandomInit(0,30) + 'rem' ;
+            img.style.left = getRandomInit(0,60) + 'rem';
+            //display object images - append to main
+            main.appendChild(img);
+            img.onclick = function() {
+                addFoundItems(images[i]);
+            }
+        }
+
+        let foundItems = [];
+
+        const addFoundItems = image => {
+            if(!foundItems.includes(image)) {
+                foundItems.push(image);
+                console.log(image);
+                displayInFooter();
+            }
+        }
+
+        const displayInFooter = () => {
+            footer.innerHTML = '';
+            for (let i = 0; i < foundItems.length; i++) {
+            //then display an image for every item in the foundItems-array
+                let imgFooter = document.createElement('img');
+                imgFooter.alt = foundItems[i].name;
+                imgFooter.src = foundItems[i].src;
+                imgFooter.style.width = '15%';
+                imgFooter.style.position = 'inline';
+                //display object foundItems - append to footer
+                footer.appendChild(imgFooter);
+
+            }
+            //call displayFooter inside addFoundItems function
+        }
+
+    </script>
+</html>
