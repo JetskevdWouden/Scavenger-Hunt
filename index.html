@@ -6,12 +6,19 @@
     </head>
     <body>
         <main id='searchField'>
-
+            <form onsubmit="submitUserName(); return false" id="userName">
+                <div class="formSection">
+                    <label for="name">User Name:</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="button">
+                    <button type="default">Submit</button>
+                </div>
+            </form>
         </main>
         <footer>
-            <h1>Items</h1>
+            <h1 class="items">Items</h1>
             <div id='foundItems'>
-
             </div>
         </footer>
     </body>
@@ -62,6 +69,9 @@
                 displayInFooter();
                 if (images.length === foundItems.length) {
                     alert('CONGRATS YOU WON!');
+                    let form = document.getElementById('userName');
+                    form.style.visibility = 'visible';
+                    submitUserName();
                 }
             }
         }
@@ -73,13 +83,20 @@
                 let imgFooter = document.createElement('img');
                 imgFooter.alt = foundItems[i].name;
                 imgFooter.src = foundItems[i].src;
-                imgFooter.style.width = '15%';
+                imgFooter.style.width = '10%';
                 imgFooter.style.position = 'inline';
                 //display object foundItems - append to footer
                 footer.appendChild(imgFooter);
 
             }
             //call displayFooter inside addFoundItems function
+        }
+
+        const submitUserName = () => {
+            const inputField = document.getElementById('name');
+            let name = inputField.value;
+             
+            return 0;
         }
 
     </script>

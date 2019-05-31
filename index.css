@@ -6,11 +6,28 @@ body {
 
 #searchField {
     width: 100%;
-    height: 80vh;
+    height: 70vh;
     position: relative;
 }
 
 footer {
     width: 100%;
-    height: 20vh;
+    height: 30vh;
+}
+
+#userName {
+    visibility: hidden;
+    background: white;
+    width: 30%;
+    padding: 5%;
+    align-items: center;
+    border-radius: 20px;
+    border: 20px solid red;
+    margin: 200px auto;
+}
+
+.items {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 4rem;
 }
